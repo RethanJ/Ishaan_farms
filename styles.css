@@ -127,6 +127,13 @@ body {
     color: var(--primary-green);
 }
 
+.logo-image {
+    height: 45px;
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 4px rgba(46, 204, 113, 0.3));
+}
+
 .logo-icon {
     font-size: 32px;
     filter: drop-shadow(0 2px 4px rgba(46, 204, 113, 0.3));
