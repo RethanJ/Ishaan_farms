@@ -1,0 +1,29 @@
+name: Python Quality Check
+
+on:
+  pull_request:
+    branches: [ main, develop ]
+  workflow_dispatch: # Allows you to run it manually from the UI
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip' # Automatically caches dependencies for speed
+
+      - name: Install Dependencies
+        run: pip install -r requirements.txt pytest ruff
+
+      - name: Run Linter (Ruff)
+        run: ruff check .
+
+      - name: Run Unit Tests (PyTest)
+        run: pytest tests/
